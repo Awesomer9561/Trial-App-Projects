@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Trial_App.Pages.Custom_Renderer_Trial.Page1"
+             xmlns:custom ="clr-namespace:Trial_App.Custom_Renderers">
+    <ContentPage.Content>
+        <StackLayout Padding="20" BackgroundColor="#95a5a6">
+            <custom:MyEntry Placeholder="Enter your name"/>
+
+            <Frame CornerRadius="15" Margin="0,10" Padding="0" HeightRequest="50">
+                <custom:MyEntry Placeholder="Enter your number" Margin="10,0"/>
+            </Frame>
+            <Entry Placeholder="Enter your address"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

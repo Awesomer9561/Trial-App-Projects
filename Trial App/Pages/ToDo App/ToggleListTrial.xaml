@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Trial_App.Pages.ToDo_App.ToggleListTrial">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <Grid RowDefinitions="*,*">
+                <ContentView>
+                    <StackLayout>
+                        <CollectionView x:Name="todoItems" Margin="20">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout Orientation="Horizontal">
+                                        <CheckBox x:Name="checkBox" 
+                                                  CheckedChanged="taskCompleted" VerticalOptions="Center"/>
+                                        <Label Text="{Binding .}" x:Name="taskItem" 
+                                               FontSize="20" VerticalOptions="Center">
+                                            <Label.Triggers>
+                                                <DataTrigger TargetType="Label"
+                                                             Binding="{Binding Source={x:Reference checkBox}, Path=IsChecked}"
+                                                             Value="true">
+                                                    <Setter Property="TextDecorations" Value="Strikethrough"/>
+                                                </DataTrigger>
+                                            </Label.Triggers>
+                                        </Label>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </StackLayout>
+                </ContentView>
+
+                <ContentView Grid.Row="1">
+                    <CollectionView x:Name="completedItems">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Orientation="Horizontal">
+                                    <CheckBox x:Name="checkBox" IsChecked="True"
+                                              CheckedChanged="taskCompleted" VerticalOptions="Center"/>
+                                    <Label Text="{Binding .}" x:Name="taskItem" TextDecorations="Strikethrough"
+                                           FontSize="20" VerticalOptions="Center">
+                                        <Label.Triggers>
+                                            <DataTrigger TargetType="Label"
+                                                         Binding="{Binding Source={x:Reference checkBox}, Path=IsChecked}"
+                                                         Value="false">
+                                                <Setter Property="TextDecorations" Value="None"/>
+                                            </DataTrigger>
+                                        </Label.Triggers>
+                                    </Label>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </ContentView>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

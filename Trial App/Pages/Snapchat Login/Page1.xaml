@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Trial_App.Pages.Page1"
+             BackgroundColor="Yellow"
+             NavigationPage.HasNavigationBar="False">
+    
+    <!--PopUp Page-->
+    
+    <ContentPage.Content>
+        <Grid RowDefinitions="9*,auto">
+            <Image Source="SnapchatLogo" Grid.Row="0"
+                   HeightRequest="100" Aspect="AspectFit"
+                   HorizontalOptions="Center" VerticalOptions="Center"/>
+
+            <Grid ColumnDefinitions="*,*" Grid.Row="1" HeightRequest="50" Margin="50">
+                <Frame BackgroundColor="White" WidthRequest="100" HeightRequest="50"
+                       CornerRadius="50" Padding="0" HasShadow="False">
+                    <Label Text="Log In" FontFamily="JFBold" FontSize="15" 
+                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="login"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+                <Frame BackgroundColor="DeepSkyBlue" WidthRequest="100" HeightRequest="50"
+                       CornerRadius="50" Grid.Column="1" Padding="0" HasShadow="False">
+                    <Label Text="Sign Up" FontFamily="JFBold" FontSize="15" TextColor="White" 
+                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="signUp"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xct:Popup xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Trial_App.Pages.Snapchat_Login.selectPopup"
+             xmlns:xct ="http://xamarin.com/schemas/2020/toolkit"
+             Size="300,300" IsLightDismissEnabled="False">
+
+    <StackLayout>
+        <Label Text="Please choose how you want to reset your password." FontSize="15"
+               VerticalOptions="CenterAndExpand" Style="{StaticResource themeLabel}"
+               HorizontalTextAlignment="Center" TextColor="#1b1b1e" Margin="20,0"/>
+
+        <Frame BackgroundColor="#1b1b1e" CornerRadius="50"
+               HeightRequest="50" WidthRequest="150" Padding="0" 
+               Margin="20,5">
+            <Label Text="Via Phone" Style="{StaticResource themeLabel}" FontSize="13"
+                   TextColor="White" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="viaPhone"/>
+            </Frame.GestureRecognizers>
+        </Frame>
+
+        <Frame BackgroundColor="#1b1b1e" CornerRadius="50"
+               HeightRequest="50" WidthRequest="150" Padding="0" 
+               Margin="20,5">
+            <Label Text="Via Email" Style="{StaticResource themeLabel}" FontSize="13"
+                   TextColor="White" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="viaEmail"/>
+            </Frame.GestureRecognizers>
+        </Frame>
+
+        <Label Text="Cancel" VerticalOptions="CenterAndExpand" FontSize="15"
+               HorizontalTextAlignment="Center" Style="{StaticResource themeLabel}"
+               TextColor="#1b1b1e" Margin="20,7">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="closePopup"/>
+            </Label.GestureRecognizers>
+        </Label>
+
+    </StackLayout>
+</xct:Popup>

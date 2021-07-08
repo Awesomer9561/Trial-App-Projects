@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Trial_App.Pages.Snapchat_Login.Login"
+             xmlns:custom ="clr-namespace:Trial_App.Custom_Renderers"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Resources>
+
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid RowDefinitions="*,auto">
+            
+
+            <StackLayout Grid.Row="0" VerticalOptions="Center" Margin="30,0">
+                <Label Text="Log In" FontSize="40"
+                   FontFamily="JFSemiBold"
+                   HorizontalTextAlignment="Center" Margin="0,0,0,100"/>
+
+                <Label Text="PHONE NUMBER" Style="{StaticResource TopText}" Margin="5,0,0,-10"/>
+                <Grid ColumnDefinitions="auto,*">
+                    <Entry Text="IN +91" TextColor="DeepSkyBlue" FontSize="15" 
+                               x:Name="phone" HorizontalOptions="Start"/>
+                    <Entry Keyboard="Telephone" MaxLength="10" CharacterSpacing="1" Grid.Column="1"/>
+                </Grid>
+
+                <Label Text="Use email or username instead" Style="{StaticResource TopText}"
+                   Margin="0,0,0,20"/>
+
+                <Label Text="PASSWORD" Style="{StaticResource TopText}" Margin="5,0,0,-10"/>
+                <Entry IsPassword="True" Completed="activateLoginBtn"
+                           x:Name="password"/>
+
+                <Label Text="Forgot your password?" Style="{StaticResource themeLabel}"
+                   HorizontalOptions="Center" FontSize="15" Margin="0,10,0,50">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="forgotPass"/>
+                    </Label.GestureRecognizers>
+                </Label>
+
+            </StackLayout>
+
+
+            <Frame x:Name="loginBtn" HeightRequest="50" WidthRequest="150" CornerRadius="50" 
+                   Margin="0,50" Padding="0" Grid.Row="1" IsEnabled="False" VerticalOptions="End" 
+                   HorizontalOptions="CenterAndExpand" HasShadow="False">
+                <Label Text="Log In" TextColor="White" 
+                       Style="{StaticResource themeLabel}"
+                       FontSize="20" HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="CenterAndExpand" Margin="0,-3,0,0"/>
+
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="DeepSkyBlue"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Disabled">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="#a4b0be"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+            </Frame>
+
+
+
+
+
+            <!--<Grid RowDefinitions="auto" Margin="15,0" Grid.Row="0" VerticalOptions="Center">
+                
+
+                
+            </Grid>-->
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Trial_App.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label" x:Key="themeLabel">
+                <Setter Property="FontFamily" Value="JFBold"/>
+            </Style>
+
+            <Style TargetType="Label" x:Key="TopText">
+                <Setter Property="TextColor" Value="DeepSkyBlue"/>
+                <Setter Property="FontSize" Value="10"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
