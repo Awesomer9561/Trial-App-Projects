@@ -3,6 +3,7 @@ using Trial_App.Droid.Custom_Renderers_Android;
 using Trial_App.Custom_Renderers;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
+using Android.Graphics.Drawables;
 
 [assembly: ExportRenderer(typeof(MyEntry), typeof(MyCustomEntryRenderer))]
 
@@ -17,9 +18,13 @@ namespace Trial_App.Droid.Custom_Renderers_Android
         {
             base.OnElementChanged(e);
 
-            if (Control != null)
+            if (e.OldElement == null)
             {
-                Control.SetBackgroundColor(global::Android.Graphics.Color.Transparent);
+                var gradientDrawable = new GradientDrawable();
+                gradientDrawable.SetCornerRadius(5);
+                gradientDrawable.SetColor(Android.Graphics.Color.Transparent);
+
+                Control.SetBackground(gradientDrawable);
             }
         }
     }
