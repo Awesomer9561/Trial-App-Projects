@@ -30,7 +30,7 @@
             <Frame BackgroundColor="#1b1b1e" CornerRadius="50"
                HeightRequest="50" WidthRequest="150" Padding="0" 
                Margin="20,5">
-                <Label Text="Via Phone" Style="{StaticResource themeLabel}" FontSize="13"
+                <Label Text="Via Phone" Style="{StaticResource themeLabel}" FontSize="13" 
                    TextColor="White" VerticalOptions="Center" HorizontalOptions="Center"/>
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Tapped="viaPhone"/>

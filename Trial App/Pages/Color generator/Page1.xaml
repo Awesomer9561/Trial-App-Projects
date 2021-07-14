@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Trial_App.Pages.Color_generator.Page1" BackgroundColor="#2c3e50">
+    <ContentPage.Content>
+        <Grid RowDefinitions="*,auto">
+            <Frame BackgroundColor="White" x:Name="box" HeightRequest="300" WidthRequest="300"
+                     VerticalOptions="Center" HorizontalOptions="Center" BorderColor="Gray"  HasShadow="False"/>
+
+            <Button Text="Click Me" Grid.Row="1" HorizontalOptions="CenterAndExpand" 
+                    Margin="20" Clicked="generate"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

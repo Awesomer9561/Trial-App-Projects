@@ -4,56 +4,27 @@
              x:Class="Trial_App.Pages.ToDo_App.ToggleListTrial">
     <ContentPage.Content>
         <StackLayout>
+            <CollectionView x:Name="todoItems">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Frame HasShadow="False" BackgroundColor="WhiteSmoke" HeightRequest="100">
+                                <Grid RowDefinitions="auto,auto" ColumnDefinitions="*,*">
 
-            <Grid RowDefinitions="*,*">
-                <ContentView>
-                    <StackLayout>
-                        <CollectionView x:Name="todoItems" Margin="20">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate>
-                                    <StackLayout Orientation="Horizontal">
-                                        <CheckBox x:Name="checkBox" 
-                                                  CheckedChanged="taskCompleted" VerticalOptions="Center"/>
-                                        <Label Text="{Binding .}" x:Name="taskItem" 
-                                               FontSize="20" VerticalOptions="Center">
-                                            <Label.Triggers>
-                                                <DataTrigger TargetType="Label"
-                                                             Binding="{Binding Source={x:Reference checkBox}, Path=IsChecked}"
-                                                             Value="true">
-                                                    <Setter Property="TextDecorations" Value="Strikethrough"/>
-                                                </DataTrigger>
-                                            </Label.Triggers>
-                                        </Label>
-                                    </StackLayout>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </StackLayout>
-                </ContentView>
-
-                <ContentView Grid.Row="1">
-                    <CollectionView x:Name="completedItems">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <StackLayout Orientation="Horizontal">
-                                    <CheckBox x:Name="checkBox" IsChecked="True"
-                                              CheckedChanged="taskCompleted" VerticalOptions="Center"/>
-                                    <Label Text="{Binding .}" x:Name="taskItem" TextDecorations="Strikethrough"
-                                           FontSize="20" VerticalOptions="Center">
-                                        <Label.Triggers>
-                                            <DataTrigger TargetType="Label"
-                                                         Binding="{Binding Source={x:Reference checkBox}, Path=IsChecked}"
-                                                         Value="false">
-                                                <Setter Property="TextDecorations" Value="None"/>
-                                            </DataTrigger>
-                                        </Label.Triggers>
-                                    </Label>
-                                </StackLayout>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                </ContentView>
-            </Grid>
+                                    <Label Text="Title" Grid.Column="0" Grid.Row="0" HorizontalOptions="Start"/>
+                                    <Label Text="Timestamp" Grid.Column="1" Grid.Row="0" HorizontalOptions="End"/>
+                                    <Label Text="Lorem Ipsum"
+                                           Grid.ColumnSpan="2" Grid.Row="1" FontSize="20"/>
+                                </Grid>
+                            </Frame>
+                            <Frame AbsoluteLayout.LayoutBounds="0.5,0.5,0,0" BackgroundColor="AntiqueWhite" WidthRequest="50" HorizontalOptions="End"
+               AbsoluteLayout.LayoutFlags="PositionProportional" Margin="20,0,20,20" >
+                                
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

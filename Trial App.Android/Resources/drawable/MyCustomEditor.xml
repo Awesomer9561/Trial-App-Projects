@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+	   android:shape="rectangle">
+	
+	
+	<size android:height="200dp" android:width="300dp"/>
+	<!--solid defines the fill color of the Editor-->
+	<solid android:color="@color/mtrl_btn_transparent_bg_color"/>
+	<!--stroke defines the border color-->
+	<stroke android:width="2dp" android:color="#ffffff" />
+	<!--the corner radius-->
+	<corners
+		android:bottomRightRadius="15dp"
+		android:bottomLeftRadius="15dp"
+		android:topLeftRadius="15dp"
+		android:topRightRadius="15dp"/>
+	
+</shape>
