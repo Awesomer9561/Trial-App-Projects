@@ -20,8 +20,6 @@ namespace Trial_App.Pages.Color_generator
         private void generate(object sender, EventArgs e)
         {
             box.BackgroundColor = Color.FromRgba(r.Next(100, 256),r.Next(100, 256), r.Next(100, 256),200);
-
-            
         }
     }
 }
