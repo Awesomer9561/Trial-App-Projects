@@ -24,8 +24,9 @@ namespace Trial_App
         {
             InitializeComponent();
 
-            //MainPage = new MainPage();
-            MainPage = new NavigationPage(new Pages.Color_generator.Page1());
+            MainPage = new MainPage();
+            //MainPage = new NavigationPage(new Pages.Mini_tabbed_page.Page1());
+            //MainPage = new NavigationPage(new Pages.Color_generator.Page1());
             //MainPage = new NavigationPage(new Pages.ToDo_App.ToggleListTrial());
             //MainPage = new NavigationPage(new Pages.Custom_Renderer_Trial.Page1());
         }

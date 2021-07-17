@@ -31,5 +31,15 @@ namespace Trial_App
         {
             App.Current.MainPage = new NavigationPage(new Pages.ToDo_App.ToggleListTrial());
         }
+
+        private void color(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new NavigationPage(new Pages.Color_generator.Page1());
+        }
+
+        private void mintabbedpage(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new NavigationPage(new Pages.Mini_tabbed_page.Page1());
+        }
     }
 }

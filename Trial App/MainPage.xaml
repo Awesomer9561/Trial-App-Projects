@@ -21,6 +21,8 @@
         <Button Text="Local Daabase" Clicked="localDB"/>
         <Button Text="Snapchat Login" Clicked="snapchatLogin"/>
         <Button Text="Todo App" Clicked="todoApp"/>
+        <Button Text="Random Color generator" Clicked="color"/>
+        <Button Text="Mini tabbed page" Clicked="mintabbedpage"/>
     </StackLayout>
 
 </ContentPage>
