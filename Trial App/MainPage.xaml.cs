@@ -41,5 +41,20 @@ namespace Trial_App
         {
             App.Current.MainPage = new NavigationPage(new Pages.Mini_tabbed_page.Page1());
         }
+
+        private void texts(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new NavigationPage(new Pages.Working_with_texts.Page1());
+        }
+
+        private void firebase(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new NavigationPage(new Pages.Cloud_Storage.Page1());
+        }
+
+        private void mvvm(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new NavigationPage(new Pages.MVVM.Page1());
+        }
     }
 }

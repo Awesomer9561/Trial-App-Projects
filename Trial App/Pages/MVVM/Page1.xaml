@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Trial_App.Pages.MVVM.Page1"
+             xmlns:viewModel ="clr-namespace:Trial_App.Pages.MVVM"
+             x:DataType="viewModel:MVVMTrialViewModel">
+    <ContentPage.BindingContext>
+        <viewModel:MVVMTrialViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <Grid RowDefinitions="auto,auto,auto,auto">
+            <Entry x:Name="username" Text="{Binding UserName}" Grid.Row="0" Margin="20"/>
+            <Entry x:Name="entry1" Text="{Binding Password}" Grid.Row="1" IsPassword="True" Margin="20"/>
+
+            <Label Text="You typed" HorizontalOptions="Center" Grid.Row="2"/>
+            <Label x:Name="pass" Text="{Binding Password}" Grid.Row="2" HorizontalOptions="CenterAndExpand" Margin="20"/>
+            <Button x:Name="button1" Text="Login" Command="{Binding login}" Grid.Row="3" HorizontalOptions="CenterAndExpand" Margin="20"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

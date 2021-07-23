@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Trial_App.Pages.Cloud_Storage.Page1">
+    <ContentPage.Content>
+        <Grid RowDefinitions="auto,auto,*,auto">
+            <Label Text="Upload your documents to cloud!" FontSize="Title"
+                VerticalOptions="Start" Margin="20"
+                HorizontalOptions="CenterAndExpand" Grid.ColumnSpan="2"/>
+            <Label Text="Select an image" HorizontalOptions="CenterAndExpand" Grid.Row="1" Grid.ColumnSpan="2"/>
+            <Frame HeightRequest="300" WidthRequest="300" HorizontalOptions="Center" VerticalOptions="Center"
+                  Grid.Row="2" Grid.ColumnSpan="2">
+                <Image Aspect="AspectFit" x:Name="imageViewer"/>
+            </Frame>
+            <Button Text="Select file" BackgroundColor="LawnGreen" Grid.Row="3" Grid.Column="0" Clicked="selectFile"/>
+            <Button Text="Upload to cloud" BackgroundColor="Orange" Grid.Row="3" Grid.Column="1" Clicked="uploadFile"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

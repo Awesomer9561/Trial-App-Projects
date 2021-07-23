@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Trial_App.Pages.Working_with_texts.Page1">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lobortis mi at metus molestie, eget feugiat risus iaculis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam elementum sapien sem, a pellentesque turpis dapibus sodales. Maecenas ut dictum metus. Donec dictum, sem non porttitor porttitor, enim magna aliquam arcu, vel semper metus risus eget nulla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam euismod, odio sit amet faucibus pharetra, sapien magna faucibus urna, eget facilisis leo nulla non purus."
+                   Margin="20" FontSize="Caption" MaxLines="4" LineBreakMode="TailTruncation"/>
+
+
+            <Label Text="Color value" HorizontalOptions="Center"/>
+            <Frame x:Name="ColorBox">
+                <Label x:Name="colorLabel" HorizontalOptions="Center"/>
+            </Frame>
+
+            <Button Text="CLick me" Clicked="Button_Clicked" HorizontalOptions="CenterAndExpand"/>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
