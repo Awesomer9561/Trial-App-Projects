@@ -1,6 +1,8 @@
 ﻿using Firebase.Storage;
+using Plugin.Media;
+using Plugin.Media.Abstractions;
 using System;
-using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
@@ -12,9 +14,10 @@ namespace Trial_App.Pages.Cloud_Storage
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Page1 : ContentPage
     {
-        FirebaseStorage firebase = new FirebaseStorage("fir-demo-71fa5.appspot.com");
-        public Stream Stream;
-        public string FileName;
+        FirebaseStorageHelper firebaseStorageHelper = new FirebaseStorageHelper();
+
+        MediaFile file;
+        
 
         public Page1()
         {
@@ -27,20 +30,7 @@ namespace Trial_App.Pages.Cloud_Storage
 
             if (status == PermissionStatus.Granted)
             {
-                var customFileType = new FilePickerFileType(new Dictionary<DevicePlatform, IEnumerable<string>>
-                {
-                    { DevicePlatform.iOS, new[] { "public.my.comic.extension" } }, // or general UTType values
-                    { DevicePlatform.Android, new[] { "*/*" } },
-                    { DevicePlatform.UWP, new[] { ".cbr", ".cbz" } },
-                    { DevicePlatform.Tizen, new[] { "*/*" } },
-                    { DevicePlatform.macOS, new[] { "cbr", "cbz" } }, // or general UTType values
-                });
-                var options = new PickOptions
-                {
-                    PickerTitle = "Please select an image",
-                    FileTypes = customFileType,
-                };
-                await PickAndShow(options);
+                PickImage();
             }
 
             if (status == PermissionStatus.Denied && DeviceInfo.Platform == DevicePlatform.iOS)
@@ -59,58 +49,114 @@ namespace Trial_App.Pages.Cloud_Storage
 
             return status;
         }
-        async Task<FileResult> PickAndShow(PickOptions options)
+
+        private async void PickImage()
         {
+            await CrossMedia.Current.Initialize();
             try
             {
-                var result = await FilePicker.PickAsync(options);
-                if (result != null)
+                file = await Plugin.Media.CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
                 {
-                    if (result.FileName.EndsWith("jpg", StringComparison.OrdinalIgnoreCase) ||
-                        result.FileName.EndsWith("png", StringComparison.OrdinalIgnoreCase))
-                    {
-                        var stream = await result.OpenReadAsync();
-                        imageViewer.Source = ImageSource.FromStream(() => stream);
-                        Stream = stream;
-                        FileName = result.FileName;
-                    }
-                }
-
-                return result;
+                    PhotoSize = Plugin.Media.Abstractions.PhotoSize.Medium
+                });
+                if (file == null)
+                    return;
+                imageViewer.Source = ImageSource.FromStream(() =>
+                {
+                    var imageStram = file.GetStream();
+                    return imageStram;
+                });
             }
             catch (Exception ex)
             {
-                // The user canceled or something went wrong
+                Debug.WriteLine(ex.Message);
             }
-
-            return null;
-        }
-
-        public async Task<string> UploadFileFunc(Stream fileStream, string fileName)
-        {
-            var fileDetails = await firebase.Child("MyUploads").Child(fileName).PutAsync(fileStream);
-
-            return fileDetails;
-
-            //firebase = new
-            //FirebaseStorage("fir-demo-71fa5.appspot.com");
-            //var imageurl = firebase
-            //        .Child("FileUploading")
-            //        .Child(fileName)
-            //        .PutAsync(fileStream);
-            //var data = imageurl;
-            //return data.TargetUrl;
         }
 
         private async void selectFile(object sender, EventArgs e)
         {
             await CheckPermissions();
+            
+
+            //await App.Current.MainPage.DisplayAlert("Success", FileName + " selected", "OK");
         }
 
         private async void uploadFile(object sender, EventArgs e)
         {
-            await UploadFileFunc(Stream, FileName);
-            await DisplayAlert("", "Upload Successful", "Ok");
+            
+            if (string.IsNullOrEmpty(fileNameEntry.Text))
+            {
+                var FileName = Path.GetFileName(file.Path);
+                await firebaseStorageHelper.UploadFile(file.GetStream(), FileName);
+                await App.Current.MainPage.DisplayAlert("Success", FileName + " uploaded to cloud", "OK");
+            }
+            else
+            {
+                var FileName = fileNameEntry.Text;
+                await firebaseStorageHelper.UploadFile(file.GetStream(), FileName);
+                await App.Current.MainPage.DisplayAlert("Success", FileName + " uploaded to cloud", "OK");
+            }
+
+        }
+
+        private async void downloadFile(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(fileNameEntry.Text))
+            {
+                await App.Current.MainPage.DisplayAlert("", "Please enter a file name", "Ok");
+                return;
+            }
+            else
+            {
+                string path = await firebaseStorageHelper.GetFile(fileNameEntry.Text);
+                await App.Current.MainPage.DisplayAlert("File Downloaded : ",path, "Ok");
+            }
+
+        }
+
+        private async void deleteFile(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(fileNameEntry.Text))
+            {
+                await App.Current.MainPage.DisplayAlert("", "Please enter a file name", "Ok");
+                return;
+            }
+            else
+            {
+                await firebaseStorageHelper.DeleteFile(fileNameEntry.Text);
+                await App.Current.MainPage.DisplayAlert("File Deteted : ", fileNameEntry.Text, "Ok");
+            }
+
+        }
+    }
+    //Separate function for CRUD operations
+    public class FirebaseStorageHelper
+    {
+        FirebaseStorage firebaseStorage = new FirebaseStorage("fir-demo-71fa5.appspot.com");
+
+        public async Task<string> UploadFile(Stream fileStream, string fileName)
+        {
+            var imageUrl = await firebaseStorage
+                .Child("XamarinMonkeys")
+                .Child(fileName)
+                .PutAsync(fileStream);
+            return imageUrl;
+        }
+
+        public async Task<string> GetFile(string fileName)
+        {
+            return await firebaseStorage
+                .Child("XamarinMonkeys")
+                .Child(fileName)
+                .GetDownloadUrlAsync();
+        }
+        public async Task DeleteFile(string fileName)
+        {
+            await firebaseStorage
+                 .Child("XamarinMonkeys")
+                 .Child(fileName)
+                 .DeleteAsync();
+
         }
     }
 }

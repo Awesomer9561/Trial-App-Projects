@@ -3,17 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Trial_App.Pages.Cloud_Storage.Page1">
     <ContentPage.Content>
-        <Grid RowDefinitions="auto,auto,*,auto">
+        <Grid RowDefinitions="auto,auto,*,auto,auto,auto">
             <Label Text="Upload your documents to cloud!" FontSize="Title"
                 VerticalOptions="Start" Margin="20"
                 HorizontalOptions="CenterAndExpand" Grid.ColumnSpan="2"/>
             <Label Text="Select an image" HorizontalOptions="CenterAndExpand" Grid.Row="1" Grid.ColumnSpan="2"/>
             <Frame HeightRequest="300" WidthRequest="300" HorizontalOptions="Center" VerticalOptions="Center"
-                  Grid.Row="2" Grid.ColumnSpan="2">
+                  Grid.Row="2" Grid.ColumnSpan="2" Padding="20">
                 <Image Aspect="AspectFit" x:Name="imageViewer"/>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="selectFile"/>
+                </Frame.GestureRecognizers>
             </Frame>
-            <Button Text="Select file" BackgroundColor="LawnGreen" Grid.Row="3" Grid.Column="0" Clicked="selectFile"/>
-            <Button Text="Upload to cloud" BackgroundColor="Orange" Grid.Row="3" Grid.Column="1" Clicked="uploadFile"/>
+            <Entry Placeholder="Enter name for file" x:Name="fileNameEntry" Grid.Row="3" Grid.ColumnSpan="2" Margin="20"/>
+            <Button Text="Select file" BackgroundColor="#f39c12" Grid.Row="4" Grid.Column="0" Clicked="selectFile" TextColor="White"/>
+            <Button Text="Upload to cloud" BackgroundColor="#2980b9" Grid.Row="4" Grid.Column="1" Clicked="uploadFile" TextColor="White"/>
+            <Button Text="Download file" BackgroundColor="#27ae60" Grid.Row="5" Grid.Column="0" Clicked="downloadFile" TextColor="White"/>
+            <Button Text="Delete file" BackgroundColor="#e74c3c" Grid.Row="5" Grid.Column="1" Clicked="deleteFile" TextColor="White"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
