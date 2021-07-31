@@ -17,7 +17,6 @@ namespace Trial_App.Pages.Cloud_Storage
         FirebaseStorageHelper firebaseStorageHelper = new FirebaseStorageHelper();
 
         MediaFile file;
-        
 
         public Page1()
         {
@@ -137,7 +136,7 @@ namespace Trial_App.Pages.Cloud_Storage
         public async Task<string> UploadFile(Stream fileStream, string fileName)
         {
             var imageUrl = await firebaseStorage
-                .Child("XamarinMonkeys")
+                .Child("MyDummyFolder")
                 .Child(fileName)
                 .PutAsync(fileStream);
             return imageUrl;
@@ -146,14 +145,14 @@ namespace Trial_App.Pages.Cloud_Storage
         public async Task<string> GetFile(string fileName)
         {
             return await firebaseStorage
-                .Child("XamarinMonkeys")
+                .Child("MyDummyFolder")
                 .Child(fileName)
                 .GetDownloadUrlAsync();
         }
         public async Task DeleteFile(string fileName)
         {
             await firebaseStorage
-                 .Child("XamarinMonkeys")
+                 .Child("MyDummyFolder")
                  .Child(fileName)
                  .DeleteAsync();
 

@@ -57,5 +57,15 @@ namespace Trial_App.Pages.Working_with_texts
 
             await Application.Current.MainPage.DisplayToastAsync("Color Changed Successfully");
         }
+
+        
+
+        private void AgeCalc_DateSelected(object sender, DateChangedEventArgs e)
+        {
+            DateTime dob = AgeCalc.Date;
+            int age = DateTime.Now.Subtract(dob).Days;
+            age = Convert.ToInt32(age / 365.25);
+            ageLabel.Text = age.ToString();
+        }
     }
 }

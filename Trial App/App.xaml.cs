@@ -25,6 +25,8 @@ namespace Trial_App
             InitializeComponent();
 
             MainPage = new NavigationPage(new MainPage());
+            //MainPage = new NavigationPage(new Pages.Rest_Api.Additem());
+            //MainPage = new NavigationPage(new Pages.Working_with_texts.Page1());
             //MainPage = new NavigationPage(new Pages.MVVM.Page1());
             //MainPage = new NavigationPage(new Pages.Cloud_Storage.Page1());
             //MainPage = new NavigationPage(new Pages.Mini_tabbed_page.Page1());

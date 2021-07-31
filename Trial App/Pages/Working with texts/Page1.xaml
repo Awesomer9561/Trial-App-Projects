@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Trial_App.Pages.Working_with_texts.Page1">
+             x:Class="Trial_App.Pages.Working_with_texts.Page1"
+             xmlns:custom ="clr-namespace:Trial_App.Custom_Renderers"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms">
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lobortis mi at metus molestie, eget feugiat risus iaculis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam elementum sapien sem, a pellentesque turpis dapibus sodales. Maecenas ut dictum metus. Donec dictum, sem non porttitor porttitor, enim magna aliquam arcu, vel semper metus risus eget nulla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam euismod, odio sit amet faucibus pharetra, sapien magna faucibus urna, eget facilisis leo nulla non purus."
@@ -14,7 +16,23 @@
             </Frame>
 
             <Button Text="CLick me" Clicked="Button_Clicked" HorizontalOptions="CenterAndExpand"/>
-            
+
+            <DatePicker x:Name="AgeCalc" DateSelected="AgeCalc_DateSelected"/>
+            <Label >
+                <Label.FormattedText>
+                    <FormattedString>
+                        <FormattedString.Spans>
+                            <Span Text="Age : "/>
+                            <Span x:Name="ageLabel"/>
+                        </FormattedString.Spans>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <inputLayout:SfTextInputLayout Hint="Hello" BackgroundColor="Transparent">
+                <Entry/>
+            </inputLayout:SfTextInputLayout>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
